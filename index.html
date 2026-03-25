@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Seva Portal</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #162d6b;
+            --bg-color: #f4f7ff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--bg-color);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--secondary-color);
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero p.trust {
+            color: #333;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            min-width: 220px;
+            max-width: 280px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 100%);
+            transform: rotate(25deg) translateX(-100%);
+            transition: transform 0.7s ease;
+        }
+
+        .card:hover::after {
+            transform: rotate(25deg) translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+        }
+
+        .thank-you {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            color: green;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        @media (max-width:600px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Student Seva Portal</h2>
+        <p>Apply for Government Certificates, Scholarships, and Jobs from Home</p>
+        <p class="trust">ଆମ ସେବାରେ ବିଶ୍ୱାସ କରନ୍ତୁ, ଆମେ ସୁରକ୍ଷିତ ଏବଂ ଦ୍ରୁତ ଭାବେ ଆବେଦନ ପ୍ରକ୍ରିୟା କରିବାକୁ ସାହାଯ୍ୟ କରୁଛୁ।
+        </p>
+    </header>
+
+    <nav>
+        <a href="#home" onclick="scrollToSection('home')">Home</a>
+        <a href="#services" onclick="scrollToSection('services')">Services</a>
+        <a href="#apply" onclick="scrollToSection('apply')">Apply</a>
+        <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Online Form Filling & Student Help Services</h1>
+        <p>Apply for government certificates, scholarships, and jobs directly from your home without any hassle.</p>
+    </section>
+
+    <section class="services" id="services">
+        <div class="card" onclick="selectService('Residence Certificate')">
+            <h3>Residence Certificate</h3>
+        </div>
+        <div class="card" onclick="selectService('Resume Builder')">
+            <h3>Resume Builder</h3>
+        </div>
+        <div class="card" onclick="selectService('PAN Card')">
+            <h3>PAN Card</h3>
+        </div>
+        <div class="card" onclick="selectService('Voter ID')">
+            <h3>Voter ID</h3>
+        </div>
+        <div class="card" onclick="selectService('Income Certificate')">
+            <h3>Income Certificate</h3>
+        </div>
+        <div class="card" onclick="selectService('Scholarship Apply')">
+            <h3>Scholarship Apply</h3>
+        </div>
+        <div class="card" onclick="selectService('All Types Jobs Apply')">
+            <h3>All Types Jobs Apply</h3>
+        </div>
+        <div class="card" onclick="selectService('ST/SC Certificate')">
+            <h3>ST/SC Certificate</h3>
+        </div>
+    </section>
+
+    <div class="container" id="apply" style="display:none;">
+        <h3>Apply for a Service</h3>
+        <form id="studentForm" action="https://formsubmit.co/sorenkola840@gmail.com" method="POST" target="_blank"
+            onsubmit="showThankYou(event)">
+            <label>Full Name</label>
+            <input type="text" name="name" required />
+
+            <label>Phone Number</label>
+            <input type="tel" name="phone" required />
+
+            <label>Select Service</label>
+            <select name="service" required>
+                <option value="Residence Certificate">Residence Certificate</option>
+                <option value="Resume Builder">Resume Builder</option>
+                <option value="PAN Card">PAN Card</option>
+                <option value="Voter ID">Voter ID</option>
+                <option value="Income Certificate">Income Certificate</option>
+                <option value="Scholarship Apply">Scholarship Apply</option>
+                <option value="All Types Jobs Apply">All Types Jobs Apply</option>
+                <option value="ST/SC Certificate">ST/SC Certificate</option>
+            </select>
+
+            <label>Message / Details</label>
+            <textarea name="message" rows="4"></textarea>
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="#success">
+
+            <button type="submit" ondblclick="hideForm()">Submit Application</button>
+        </form>
+        <div class="thank-you" id="thankYouMsg">🎉 Thank you, Ish! Your application has been submitted successfully.
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p>© 2026 Student Seva Portal | Not a Government Website</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectService(serviceName) {
+            const applyForm = document.getElementById('apply');
+            applyForm.style.display = 'block';
+            const select = applyForm.querySelector('select[name="service"]');
+            if (select) select.value = serviceName;
+            applyForm.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideForm() {
+            const form = document.getElementById('studentForm');
+            form.style.display = 'none';
+        }
+
+        function showThankYou(event) {
+            event.preventDefault();
+            hideForm();
+            document.getElementById('thankYouMsg').style.display = 'block';
+            event.target.submit();
+        }
+    </script>
+
+</body>
+
+</html>
